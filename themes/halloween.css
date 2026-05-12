@@ -1,0 +1,146 @@
+/* ===== TEMA HALLOWEEN ===== */
+:root {
+    --primary-color: #FF6600;
+    --secondary-color: #8B008B;
+    --bg-gradient-start: #0a0a0a;
+    --bg-gradient-end: #1a0a2e;
+    --text-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.7);
+    --glow-color: rgba(255, 102, 0, 0.8);
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    position: relative;
+}
+
+/* Murciélagos y fantasmas */
+body::before {
+    content: '🦇';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    color: rgba(139, 0, 139, 0.3);
+    pointer-events: none;
+    z-index: -1;
+    animation: batFly 15s linear infinite;
+}
+
+body::after {
+    content: '🎃 👻 🕷️ 🕸️ 💀 🧙';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: -1;
+    letter-spacing: 3rem;
+}
+
+@keyframes batFly {
+    0% {
+        transform: translateX(-100px) translateY(0);
+    }
+    50% {
+        transform: translateX(100vw) translateY(-50px);
+    }
+    100% {
+        transform: translateX(-100px) translateY(0);
+    }
+}
+
+.header .title {
+    color: #FF6600;
+    text-shadow: 
+        0 0 20px rgba(255, 102, 0, 0.8),
+        0 0 40px rgba(139, 0, 139, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    animation: spookyGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes spookyGlow {
+    from {
+        text-shadow: 
+            0 0 20px rgba(255, 102, 0, 0.8),
+            0 0 40px rgba(139, 0, 139, 0.6);
+    }
+    to {
+        text-shadow: 
+            0 0 30px rgba(255, 102, 0, 1),
+            0 0 60px rgba(139, 0, 139, 0.8),
+            0 0 80px rgba(255, 102, 0, 0.6);
+    }
+}
+
+.fortune-cookie.unlocked {
+    filter: drop-shadow(0 0 30px rgba(255, 102, 0, 0.8)) drop-shadow(0 0 50px rgba(139, 0, 139, 0.6));
+    animation: float 3s ease-in-out infinite, spookyShake 0.5s ease-in-out infinite;
+}
+
+@keyframes spookyShake {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(-2deg); }
+    75% { transform: translateY(-5px) rotate(2deg); }
+}
+
+.timer-section {
+    border: 2px solid var(--primary-color);
+    background: rgba(255, 102, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(255, 102, 0, 0.3);
+}
+
+.time-value {
+    color: #FF6600;
+    text-shadow: 0 0 10px rgba(255, 102, 0, 0.8);
+}
+
+.lucky-number {
+    background: linear-gradient(135deg, #FF6600 0%, #8B008B 100%);
+    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.5);
+}
+
+.close-btn {
+    background: linear-gradient(135deg, #FF6600 0%, #8B008B 100%);
+}
+
+.close-btn:hover {
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.8), 0 0 40px rgba(139, 0, 139, 0.6);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.theme-toggle {
+    background: linear-gradient(135deg, #FF6600 0%, #8B008B 100%);
+}
+
+.theme-toggle:hover {
+    animation: spookyRotate 0.5s ease-in-out;
+}
+
+@keyframes spookyRotate {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg) scale(1.1); }
+    75% { transform: rotate(15deg) scale(1.1); }
+}
+
+/* Niebla misteriosa */
+.container::before {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to top, rgba(139, 0, 139, 0.3), transparent);
+    pointer-events: none;
+    animation: fog 8s ease-in-out infinite;
+}
+
+@keyframes fog {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
