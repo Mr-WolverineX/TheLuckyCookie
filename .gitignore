@@ -1,0 +1,65 @@
+# ===== ARCHIVOS DEL SISTEMA OPERATIVO =====
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ===== EDITORES DE CÓDIGO =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# ===== NODE.JS (si usas npm en el futuro) =====
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ===== ARCHIVOS TEMPORALES =====
+*.tmp
+*.temp
+*.log
+*.cache
+*.bak
+*.backup
+
+# ===== ARCHIVOS INNECESARIOS DEL PROYECTO =====
+INICIAR.bat
+ABRIR_AQUI.txt
+VERIFICACION_COMPLETA.md
+data/frases.json
+data/zodiaco.json
+
+# ===== ARCHIVOS DE PRUEBA =====
+test/
+*.test.js
+*.spec.js
+
+# ===== ARCHIVOS SENSIBLES =====
+.env
+.env.local
+.env.*.local
+config.local.js
+secrets.json
+*.key
+*.pem
+
+# ===== ARCHIVOS DE BUILD =====
+dist/
+build/
+*.min.js.map
+*.min.css.map
+
+# ===== OTROS =====
+*.zip
+*.rar
+*.7z
