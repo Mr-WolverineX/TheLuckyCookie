@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Captura de Pantalla - Galleta de la Suerte</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+        }
+        .instructions {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        button {
+            background: #D4AF37;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 20px 10px;
+        }
+        button:hover {
+            background: #c49b2e;
+        }
+        code {
+            background: rgba(0,0,0,0.3);
+            padding: 2px 8px;
+            border-radius: 3px;
+            color: #FFD700;
+        }
+        ol {
+            text-align: left;
+            line-height: 2;
+        }
+        .warning {
+            background: rgba(255,193,7,0.2);
+            border-left: 4px solid #FFC107;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h1>📸 Cómo Tomar Screenshot para PWA</h1>
+        
+        <div class="warning">
+            <strong>⚠️ Importante:</strong> Los screenshots deben ser de la app funcionando, no de esta página.
+        </div>
+
+        <h2>Método 1: Manual (Recomendado)</h2>
+        <ol>
+            <li>Abre tu app en: <code>https://mr-wolverinex.github.io/TheLuckyCookie/</code></li>
+            <li>Presiona <code>F12</code> para abrir DevTools</li>
+            <li>Presiona <code>Ctrl + Shift + M</code> para modo responsive</li>
+            <li>Selecciona "Responsive" en el dropdown</li>
+            <li>Ajusta el tamaño a <code>1280 x 720</code></li>
+            <li>Presiona <code>Ctrl + Shift + P</code></li>
+            <li>Escribe "screenshot" y selecciona "Capture screenshot"</li>
+            <li>Guarda como <code>screenshot-wide.png</code> en <code>assets/screenshots/</code></li>
+        </ol>
+
+        <h2>Método 2: Extensión de Chrome</h2>
+        <ol>
+            <li>Instala "Full Page Screen Capture" de Chrome Web Store</li>
+            <li>Abre tu app</li>
+            <li>Haz clic en el icono de la extensión</li>
+            <li>Recorta a 1280x720</li>
+            <li>Guarda en <code>assets/screenshots/</code></li>
+        </ol>
+
+        <h2>Método 3: Windows Snipping Tool</h2>
+        <ol>
+            <li>Abre tu app en pantalla completa</li>
+            <li>Presiona <code>Win + Shift + S</code></li>
+            <li>Selecciona el área de la app</li>
+            <li>Pega en Paint</li>
+            <li>Redimensiona a 1280x720</li>
+            <li>Guarda como PNG</li>
+        </ol>
+
+        <button onclick="openApp()">🚀 Abrir App para Screenshot</button>
+        <button onclick="openDevTools()">📖 Ver Guía Completa</button>
+    </div>
+
+    <script>
+        function openApp() {
+            window.open('https://mr-wolverinex.github.io/TheLuckyCookie/', '_blank');
+            alert('✅ App abierta en nueva pestaña\n\nSigue las instrucciones arriba para tomar el screenshot.');
+        }
+
+        function openDevTools() {
+            alert('📋 Pasos rápidos:\n\n1. F12 (DevTools)\n2. Ctrl+Shift+M (Responsive)\n3. Ajustar a 1280x720\n4. Ctrl+Shift+P\n5. "Capture screenshot"\n6. Guardar en assets/screenshots/');
+        }
+    </script>
+</body>
+</html>
