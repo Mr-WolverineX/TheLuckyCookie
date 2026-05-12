@@ -1,0 +1,41 @@
+# ===== NORMALIZACIÓN DE FINALES DE LÍNEA =====
+# Auto detectar archivos de texto y normalizar finales de línea
+* text=auto
+
+# ===== ARCHIVOS DE TEXTO =====
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.xml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# ===== ARCHIVOS BINARIOS =====
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.otf binary
+*.mp3 binary
+*.mp4 binary
+*.webm binary
+*.pdf binary
+*.zip binary
+
+# ===== ARCHIVOS MINIFICADOS (sin diff) =====
+*.min.js -diff
+*.min.css -diff
+
+# ===== ARCHIVOS GENERADOS (sin diff) =====
+package-lock.json -diff
+yarn.lock -diff
