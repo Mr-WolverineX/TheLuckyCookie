@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Iconos - Galleta de la Suerte</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #1a1a2e;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        canvas {
+            border: 2px solid #D4AF37;
+            margin: 10px;
+            background: white;
+        }
+        button {
+            background: #D4AF37;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        button:hover {
+            background: #c49b2e;
+        }
+        .instructions {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .icon-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .icon-item {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🥠 Generador de Iconos - Galleta de la Suerte</h1>
+        
+        <div class="instructions">
+            <h2>📋 Instrucciones:</h2>
+            <ol>
+                <li>Haz clic en "Generar Iconos"</li>
+                <li>Haz clic derecho en cada icono → "Guardar imagen como..."</li>
+                <li>Guarda cada uno con su nombre correspondiente en la carpeta <code>assets/icons/</code></li>
+                <li>Los nombres deben ser exactamente: <code>icon-192x192.png</code> y <code>icon-512x512.png</code></li>
+            </ol>
+        </div>
+
+        <button onclick="generateIcons()">🎨 Generar Iconos</button>
+        <button onclick="downloadAll()">💾 Descargar Todos</button>
+
+        <div class="icon-preview" id="iconPreview"></div>
+    </div>
+
+    <script>
+        const sizes = [192, 512];
+        const canvases = {};
+
+        function generateIcons() {
+            const preview = document.getElementById('iconPreview');
+            preview.innerHTML = '';
+
+            sizes.forEach(size => {
+                const iconItem = document.createElement('div');
+                iconItem.className = 'icon-item';
+
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                canvas.id = `icon-${size}`;
+                canvases[size] = canvas;
+
+                const ctx = canvas.getContext('2d');
+
+                // Fondo degradado dorado
+                const gradient = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+                gradient.addColorStop(0, '#FFD700');
+                gradient.addColorStop(0.5, '#D4AF37');
+                gradient.addColorStop(1, '#B8860B');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, size, size);
+
+                // Círculo de borde
+                ctx.strokeStyle = '#8B6914';
+                ctx.lineWidth = size * 0.02;
+                ctx.beginPath();
+                ctx.arc(size/2, size/2, size/2 - size * 0.02, 0, Math.PI * 2);
+                ctx.stroke();
+
+                // Emoji de galleta (más grande y centrado)
+                ctx.font = `${size * 0.6}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                
+                // Sombra para el emoji
+                ctx.shadowColor = 'rgba(0,0,0,0.3)';
+                ctx.shadowBlur = size * 0.02;
+                ctx.shadowOffsetX = size * 0.01;
+                ctx.shadowOffsetY = size * 0.01;
+                
+                ctx.fillText('🥠', size/2, size/2);
+
+                // Reset shadow
+                ctx.shadowColor = 'transparent';
+
+                // Agregar a la vista previa
+                const label = document.createElement('p');
+                label.textContent = `${size}x${size}px`;
+                label.style.marginTop = '10px';
+
+                const downloadBtn = document.createElement('button');
+                downloadBtn.textContent = `💾 Descargar ${size}x${size}`;
+                downloadBtn.onclick = () => downloadIcon(size);
+
+                iconItem.appendChild(canvas);
+                iconItem.appendChild(label);
+                iconItem.appendChild(downloadBtn);
+                preview.appendChild(iconItem);
+            });
+        }
+
+        function downloadIcon(size) {
+            const canvas = canvases[size];
+            const link = document.createElement('a');
+            link.download = `icon-${size}x${size}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function downloadAll() {
+            if (Object.keys(canvases).length === 0) {
+                alert('⚠️ Primero genera los iconos haciendo clic en "Generar Iconos"');
+                return;
+            }
+
+            sizes.forEach((size, index) => {
+                setTimeout(() => {
+                    downloadIcon(size);
+                }, index * 500); // Delay para evitar bloqueo del navegador
+            });
+
+            alert('✅ Descargando todos los iconos...\n\nGuárdalos en: assets/icons/');
+        }
+
+        // Generar automáticamente al cargar
+        window.onload = generateIcons;
+    </script>
+</body>
+</html>
