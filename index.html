@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Abre tu galleta de la suerte diaria">
+    <meta name="theme-color" content="#D4AF37">
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Galleta Suerte">
+    
+    <title>🥠 Galleta de la Suerte</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+    <link id="theme-link" rel="stylesheet" href="themes/oriental.css">
+</head>
+<body>
+    <!-- Selector de Tema (Oculto - Solo para desarrollador en app.js) -->
+    <div class="theme-selector" style="display: none;">
+        <button id="theme-btn" class="theme-toggle" title="Cambiar tema">🎨</button>
+        <div id="theme-menu" class="theme-menu hidden">
+            <button data-theme="oriental">🥠 Oriental</button>
+            <button data-theme="navidad">🎄 Navidad</button>
+            <button data-theme="halloween">🎃 Halloween</button>
+            <button data-theme="valentine">💝 San Valentín</button>
+        </div>
+    </div>
+
+    <!-- Contenedor Principal -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">🥠 Galleta de la Suerte</h1>
+            <p class="subtitle">Tu mensaje diario te espera</p>
+        </header>
+
+        <!-- Temporizador -->
+        <div id="timer-section" class="timer-section">
+            <p class="timer-label">Próxima galleta disponible en:</p>
+            <div class="timer-display">
+                <div class="time-unit">
+                    <span id="hours" class="time-value">00</span>
+                    <span class="time-label">Horas</span>
+                </div>
+                <span class="time-separator">:</span>
+                <div class="time-unit">
+                    <span id="minutes" class="time-value">00</span>
+                    <span class="time-label">Minutos</span>
+                </div>
+                <span class="time-separator">:</span>
+                <div class="time-unit">
+                    <span id="seconds" class="time-value">00</span>
+                    <span class="time-label">Segundos</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Galleta -->
+        <div class="fortune-cookie-container">
+            <div id="cookie" class="fortune-cookie locked">
+                <div class="cookie-shine"></div>
+                <div class="cookie-top"></div>
+                <div class="cookie-bottom"></div>
+                <div class="cookie-crack"></div>
+                <div class="fortune-paper-slip" id="paper-slip">
+                    <div class="paper-text">📜</div>
+                </div>
+            </div>
+            <p id="cookie-status" class="cookie-status">Bloqueada</p>
+        </div>
+
+        <!-- Mensaje de la Suerte -->
+        <div id="fortune-message" class="fortune-message hidden">
+            <div class="fortune-paper">
+                <div class="paper-content">
+                    <p class="fortune-text" id="fortune-text"></p>
+                    
+                    <div class="fortune-details">
+                        <div class="zodiac-section">
+                            <h3>🌟 Signo del Día</h3>
+                            <p class="zodiac-sign" id="zodiac-sign"></p>
+                            <p class="zodiac-decan" id="zodiac-decan"></p>
+                        </div>
+                        
+                        <div class="lucky-numbers">
+                            <h3>🎲 Números de la Suerte</h3>
+                            <div class="numbers-display pyramid">
+                                <div class="pyramid-row row-1">
+                                    <span class="lucky-number" id="num1"></span>
+                                </div>
+                                <div class="pyramid-row row-2">
+                                    <span class="lucky-number" id="num2"></span>
+                                    <span class="lucky-number" id="num3"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Botones de compartir -->
+                    <div class="share-buttons">
+                        <p class="share-label">Compartir mi fortuna:</p>
+                        <div class="social-buttons">
+                            <button id="share-instagram" class="social-btn instagram" title="Compartir en Instagram">
+                                <span>📷</span>
+                            </button>
+                            <button id="share-twitter" class="social-btn twitter" title="Compartir en X (Twitter)">
+                                <span>𝕏</span>
+                            </button>
+                            <button id="share-facebook" class="social-btn facebook" title="Compartir en Facebook">
+                                <span>f</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fortune-actions">
+                    <button id="view-history" class="history-btn">📜 Ver Historial</button>
+                    <button id="close-fortune" class="close-btn">Cerrar</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal de Historial -->
+        <div id="history-modal" class="fortune-message hidden">
+            <div class="fortune-paper">
+                <h2 class="history-title">📜 Mis Últimas Fortunas</h2>
+                <div id="history-list" class="history-list"></div>
+                <button id="close-history" class="close-btn">Cerrar</button>
+            </div>
+        </div>
+
+        <!-- Partículas de Confeti -->
+        <div id="confetti-container" class="confetti-container"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>✨ Una nueva fortuna cada 24 horas ✨</p>
+        <p class="credits">Creado con ❤️ por <strong>atack</strong> © 2026</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
