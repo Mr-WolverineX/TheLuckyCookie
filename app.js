@@ -1,7 +1,7 @@
 // ===== CONFIGURACIÓN GLOBAL =====
 const CONFIG = {
     // MODO DE PRUEBA: Cambia a true para probar sin esperar 24 horas
-    TEST_MODE: false, // ⚠️ Cambiar a true para pruebas, false para producción
+    TEST_MODE: true, // ⚠️ Cambiar a true para pruebas, false para producción
     
     // TEMA: Cambia el tema según la temporada (solo para desarrollador)
     THEME_MODE: 'oriental', // Opciones: 'oriental', 'navidad', 'halloween', 'valentine'
